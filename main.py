@@ -65,7 +65,9 @@ def read_books(
         limit: int = 10,
         db: Session = Depends(get_db)
 ):
-    return crud.get_books_list(db=db, author_id=author_id, skip=skip, limit=limit)
+    return crud.get_books_list(
+        db=db, author_id=author_id, skip=skip, limit=limit
+    )
 
 
 @app.post("/books/", response_model=schemas.Book)
