@@ -5,6 +5,7 @@ import crud
 import schemas
 from database import SessionLocal
 
+
 app = FastAPI()
 
 
