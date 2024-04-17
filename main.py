@@ -29,7 +29,7 @@ def read_authors(
         limit: int = 10,
         db: Session = Depends(get_db)
 ):
-    return crud.get_all_authors(db, skip, limit)
+    return crud.get_all_authors(db=db, skip=skip, limit=limit)
 
 
 @app.get("/authors/{author_id}/", response_model=schemas.Author)
@@ -65,7 +65,7 @@ def read_books(
         limit: int = 10,
         db: Session = Depends(get_db)
 ):
-    return crud.get_books_list(db=db, author_id=author_id)[skip: skip + limit]
+    return crud.get_books_list(db=db, author_id=author_id, skip=skip, limit=limit)
 
 
 @app.post("/books/", response_model=schemas.Book)

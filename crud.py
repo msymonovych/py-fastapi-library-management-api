@@ -32,13 +32,18 @@ def create_author(db: Session, author: AuthorCreate):
     return db_author
 
 
-def get_books_list(db: Session, author_id: int | None = None):
+def get_books_list(
+        db: Session,
+        skip: int,
+        limit: int,
+        author_id: int | None = None,
+):
     queryset = db.query(models.Book)
 
     if author_id:
         queryset = queryset.filter(models.Book.author_id == author_id)
 
-    return queryset.all()
+    return queryset.slice(skip, limit)
 
 
 def create_book(db: Session, book: BookCreate):
