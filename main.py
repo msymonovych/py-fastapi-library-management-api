@@ -28,7 +28,7 @@ def read_authors(
         limit: int = 10,
         db: Session = Depends(get_db)
 ):
-    return crud.get_all_authors(db)[skip: skip + limit]
+    return crud.get_all_authors(db, skip, limit)
 
 
 @app.get("/authors/{author_id}/", response_model=schemas.Author)

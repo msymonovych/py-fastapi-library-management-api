@@ -4,8 +4,8 @@ import models
 from schemas import AuthorCreate, BookCreate
 
 
-def get_all_authors(db: Session):
-    return db.query(models.Author).all()
+def get_all_authors(db: Session, skip: int, limit: int):
+    return db.query(models.Author).slice(skip, limit)
 
 
 def get_author_by_name(db: Session, name: str):
